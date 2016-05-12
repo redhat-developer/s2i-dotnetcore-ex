@@ -1,0 +1,39 @@
+[[s2i-aspnet-example]]
+= s2i-aspnet Example Projects
+
+This repository contains example projects that can be built using the
+https://github.com/openshift-s2i/s2i-aspnet[s2i-aspnet] builder image,
+which can be used to create reproducible Docker images from your ASP.NET
+project's source code.  The resulting images can be run using https://docker.com[Docker].
+
+For more information about using these images with OpenShift, please see
+the official
+https://docs.openshift.org/latest/using_images/s2i_images/php.html[OpenShift
+Documentation].
+
+[[contributing]]
+Contributing
+~~~~~~~~~~~~
+
+Contributions to this project (in the form of bug reports, patches, or pull
+requests) are gratefully accepted by the maintainer.  Please see the
+link:Contributing.adoc[Contributing.adoc] file contained in this package
+for details.
+
+[[copyright-license]]
+Copyright and License
+~~~~~~~~~~~~~~~~~~~~~
+
+Copyright 2016 by Red Hat, Inc.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this package except in compliance with the License (see the `LICENSE` file
+included in this distribution). You may obtain a copy of the License at
+
+   http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.
