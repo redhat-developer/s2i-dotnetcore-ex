@@ -16,15 +16,13 @@ Documentation].
 
 The sample application can be built and run either within OpenShift or standalone by combining the application using s2i tool and running with existing image using Docker. The following sections describes these processes
 
-NOTE: The S2I builder can be built using the steps provided in the https://github.com/openshift-s2i/s2i-aspnet[builder repository] or to use an existing image that was build and available on https://hub.docker.com/r/sabre1041/s2i-aspnet/[Docker Hub]. The following steps will provide guidance based on the Docker Hub resources.  
-
 == OpenShift
 
 After logging into an OpenShift environment and creating or using an existing project, create a new application which combines the ASP.NET S2I builder and the sample application from this repository
 
 [source]
 ----
-oc new-app sabre1041/s2i-aspnet~https://github.com/openshift-s2i/s2i-aspnet-example --context-dir=app --name=aspnet-app
+oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/openshift-s2i/s2i-aspnet-example --context-dir=app --name=aspnet-app
 ----
 
 Create a new route so that the application is accessible outside the OpenShift environment
