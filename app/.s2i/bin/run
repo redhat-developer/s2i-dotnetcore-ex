@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+echo "---> Running data migration..."
+dotnet ef database update
+
+echo "---> Running application ..."
+dotnet run

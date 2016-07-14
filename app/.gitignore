@@ -10,6 +10,9 @@
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
+# Allow S2I bin folder
+!.s2i/bin/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
