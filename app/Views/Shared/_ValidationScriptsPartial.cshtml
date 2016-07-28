@@ -1,8 +1,11 @@
+<!-- FIXME: To be used with bower install
+See: https://github.com/openshift-s2i/s2i-aspnet-example/issues/7
+
 <environment names="Development">
     <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
-</environment>
-<environment names="Staging,Production">
+</environment> -->
+<environment names="Staging,Production,Development">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"
             asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
             asp-fallback-test="window.jQuery && window.jQuery.validator">
