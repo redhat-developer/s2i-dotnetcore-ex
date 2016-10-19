@@ -22,7 +22,7 @@ After logging into an OpenShift environment and creating or using an existing pr
 
 [source]
 ----
-oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/openshift-s2i/s2i-aspnet-example --context-dir=app --name=aspnet-app
+oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/openshift-s2i/s2i-aspnet-example --name=aspnet-app
 ----
 
 Create a new route so that the application is accessible outside the OpenShift environment
@@ -59,15 +59,10 @@ Instantiate the template to build and deploy the sample application
 
 [source]
 ----
-oc new-app --template=aspnet-s2i -p GIT_URI=https://github.com/openshift-s2i/s2i-aspnet-example,GIT_CONTEXT_DIR=app
+oc new-app --template=aspnet-s2i -p GIT_URI=https://github.com/openshift-s2i/s2i-aspnet-example
 ----
 
 The template can also be instantiated using the OpenShift web console. Login to the console and navigate to the desired project. Click the *Add to Project* button. Search and select the `aspnet-s2i`.
-
-Set the following parameters:
-
-* Git URI - https://github.com/openshift-s2i/s2i-aspnet-example
-* Git Context Directory - app
 
 Click *Create* to start a build and deploy the sample application.
 
