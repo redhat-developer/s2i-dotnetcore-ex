@@ -1,5 +1,5 @@
 [[s2i-aspnet-example]]
-= s2i-aspnet Example Projects
+= .NET Core Sample App on OpenShift
 
 This repository contains an example project that can be built using the
 https://github.com/openshift-s2i/s2i-aspnet[s2i-aspnet] builder image,
@@ -22,7 +22,7 @@ After logging into an OpenShift environment and creating or using an existing pr
 
 [source]
 ----
-oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/openshift-s2i/s2i-aspnet-example --name=aspnet-app
+oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex --name=aspnet-app --context-dir=app
 ----
 
 Create a new route so that the application is accessible outside the OpenShift environment
@@ -59,7 +59,7 @@ Instantiate the template to build and deploy the sample application
 
 [source]
 ----
-oc new-app --template=aspnet-s2i -p GIT_URI=https://github.com/openshift-s2i/s2i-aspnet-example
+oc new-app --template=aspnet-s2i -p GIT_URI=https://github.com/redhat-developer/s2i-dotnetcore-ex
 ----
 
 The template can also be instantiated using the OpenShift web console. Login to the console and navigate to the desired project. Click the *Add to Project* button. Search and select the `aspnet-s2i`.
@@ -75,8 +75,8 @@ To build a new ASP.NET application using a previously existing S2I builder, exec
 
 [source]
 ----
-git clone https://github.com/openshift-s2i/s2i-aspnet-example.git
-cd s2i-aspnet-example
+git clone https://github.com/redhat-developer/s2i-dotnetcore-ex.git
+cd s2i-dotnetcore-ex
 s2i build app/ aspapp aspnet-app --loglevel=5
 ----
 
