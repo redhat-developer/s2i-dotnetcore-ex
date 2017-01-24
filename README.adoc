@@ -22,7 +22,7 @@ After logging into an OpenShift environment and creating or using an existing pr
 
 [source]
 ----
-oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex --name=aspnet-app --context-dir=app
+oc new-app registry.access.redhat.com/dotnet/dotnetcore-11-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.1 --name=aspnet-app --context-dir=app
 ----
 
 Create a new route so that the application is accessible outside the OpenShift environment
