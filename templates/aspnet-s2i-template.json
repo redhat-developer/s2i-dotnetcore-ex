@@ -255,7 +255,7 @@
             "name": "GIT_REF",
             "description": "Set this to a branch name, tag or other ref of your repository if you are not using the default branch.",
             "displayName": "Git Branch",
-            "value": "master"
+            "value": "dotnetcore-1.1"
         },
         {
             "name": "GIT_CONTEXT_DIR",
@@ -271,7 +271,7 @@
         {
             "name": "ASP_UPSTREAM_IMAGE",
             "description": "Base OpenShift ASP S2I Image",
-            "value": "registry.access.redhat.com/dotnet/dotnetcore-10-rhel7",
+            "value": "registry.access.redhat.com/dotnet/dotnetcore-11-rhel7",
             "displayName": "Upstream S2I Image"
         },
         {
