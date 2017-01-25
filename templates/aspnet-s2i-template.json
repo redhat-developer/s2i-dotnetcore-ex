@@ -277,7 +277,7 @@
         {
             "name": "ASP_UPSTREAM_IMAGE_TAG",
             "description": "Base OpenShift ASP S2I Image Tag",
-            "value": "1.0",
+            "value": "latest",
             "displayName": "Upstream S2I Image Tag"
         },
         {
