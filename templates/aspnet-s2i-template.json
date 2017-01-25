@@ -52,7 +52,6 @@
                     }
                 ],
                 "selector": {
-                    "app": "${APPLICATION_NAME}",
                     "deploymentconfig": "${APPLICATION_NAME}"
                 },
                 "type": "ClusterIP",
@@ -163,14 +162,12 @@
                 ],
                 "replicas": 1,
                 "selector": {
-                    "app": "${APPLICATION_NAME}",
                     "deploymentconfig": "${APPLICATION_NAME}"
                 },
                 "template": {
                     "metadata": {
                         "creationTimestamp": null,
                         "labels": {
-                            "app": "${APPLICATION_NAME}",
                             "deploymentconfig": "${APPLICATION_NAME}"
                         }
                     },
