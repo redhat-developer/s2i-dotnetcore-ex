@@ -59,7 +59,7 @@ Instantiate the template to build and deploy the sample application
 
 [source]
 ----
-oc new-app --template=aspnet-s2i -p GIT_URI=https://github.com/redhat-developer/s2i-dotnetcore-ex
+oc new-app --template=aspnet-s2i
 ----
 
 The template can also be instantiated using the OpenShift web console. Login to the console and navigate to the desired project. Click the *Add to Project* button. Search and select the `aspnet-s2i`.
