@@ -4,9 +4,9 @@
     "metadata": {
         "name": "aspnet-s2i",
         "annotations": {
-            "description": "Application template for asp .NET applications",
+            "description": "Application template for ASP .NET applications",
             "tags": "quickstart,dotnet,.net",
-            "iconClass": "fa fa-code"
+            "iconClass": "icon-dotnet"
         }
     },
     "objects": [
@@ -24,7 +24,7 @@
             "kind": "ImageStream",
             "apiVersion": "v1",
             "metadata": {
-                "name": "s2i-aspnet"
+                "name": "dotnet"
             },
             "spec": {
                 "dockerImageRepository": "${ASP_UPSTREAM_IMAGE}"
@@ -105,7 +105,7 @@
                     "sourceStrategy": {
                         "from": {
                             "kind": "ImageStreamTag",
-                            "name": "s2i-aspnet:${ASP_UPSTREAM_IMAGE_TAG}"
+                            "name": "dotnet:${ASP_UPSTREAM_IMAGE_TAG}"
                         }
                     }
                 },
