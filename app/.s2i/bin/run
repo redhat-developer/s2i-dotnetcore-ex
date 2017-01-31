@@ -2,8 +2,10 @@
 
 set -e
 
+DOTNET_FRAMEWORK="netcoreapp1.1"
+
 echo "---> Running data migration..."
-dotnet ef database update
+dotnet ef -f ${DOTNET_FRAMEWORK} database update
 
 echo "---> Running application ..."
-exec dotnet run
+exec dotnet run -f ${DOTNET_FRAMEWORK}
