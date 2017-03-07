@@ -183,15 +183,15 @@
                                     }
                                 ],
                                 "readinessProbe": {
-                                  "timeoutSeconds": 3,
-                                  "initialDelaySeconds": 3,
+                                  "timeoutSeconds": 15,
+                                  "initialDelaySeconds": 30,
                                   "httpGet": {
                                     "path": "/",
                                     "port": 8080
                                   }
                                 },
                                 "livenessProbe": {
-                                  "timeoutSeconds": 3,
+                                  "timeoutSeconds": 15,
                                   "initialDelaySeconds": 30,
                                   "httpGet": {
                                     "path": "/",
