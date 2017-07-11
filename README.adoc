@@ -20,84 +20,8 @@ existing image using Docker. The following sections describes these processes.
 
 == OpenShift
 
-After logging into an OpenShift environment and creating or using an existing
-project, create a new application which combines the s2i-dotnetcore builder and
-the sample application from this repository:
-
-For .NET Core 1.0 use:
-
-[source]
-----
-oc new-app registry.access.redhat.com/dotnet/dotnetcore-10-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.0 --name=aspnet-app --context-dir=app
-----
-
-For .NET Core 1.1 use:
-
-[source]
-----
-oc new-app registry.access.redhat.com/dotnet/dotnetcore-11-rhel7~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-1.1 --name=aspnet-app --context-dir=app
-----
-
-Next, create a new route so that the application is accessible outside the OpenShift environment
-
-[source]
-----
-oc expose service aspnet-app
-----
-
-The application will now be available at http://aspnet-app-&lt;project&gt;.&lt;default_subdomain&gt;
-
-=== Use a template to build and deploy a sample application
-
-A template has been provided to simplify the build and deployment of a .NET
-Core application on OpenShift. The template is located in the `templates`
-folder of the https://github.com/redhat-developer/s2i-dotnetcore[s2i-dotnetcore
-repository]. File
-https://github.com/redhat-developer/s2i-dotnetcore/blob/master/templates/dotnet-example.json[dotnet-example.json]
-
-After logging into an OpenShift environment and creating or using an existing
-project, add the template to the project
-
-[source]
-----
-oc create -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/templates/dotnet-example.json
-----
-
-[NOTE]
-=====================================================================
-Alternately, the template can be added to the `openshift` project so that it will be visible by all users. Using a user with permissions to modify resources in the `openshift` project, execute the following command:
-
-[source]
-----
-oc create -n openshift -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/master/templates/dotnet-example.json
-----
-=====================================================================
-
-You can create the .NET Core sample application using the template with:
-
-[source]
-----
-oc process dotnet-example NAME=aspnet-app NAMESPACE=<project-name> DOTNET_IMAGE_STREAM_TAG=dotnet:1.1 SOURCE_REPOSITORY_REF=dotnetcore-1.1 | oc create -f -
-----
-
-The template can also be instantiated using the OpenShift web console. Login to
-the console and navigate to the desired project. Click the *Add to Project*
-button. Search and select the one with name `dotnet-example`.
-
-Click *Create* to start a build and deploy the sample application. You can
-choose to modify some some of the template parameters as you like. For example,
-the above `oc process` invocation changes relevant parameters so that the .NET
-Core 1.1 image gets selected and the corresponding `dotnetcore-1.1` branch will
-be being used for building the app. More information about supported
-environment variables can be found in the
-https://github.com/redhat-developer/s2i-dotnetcore[s2i-dotnetcore repository]
-in the corresponding image version's subfolder. For example for 1.0 see:
-https://github.com/redhat-developer/s2i-dotnetcore/blob/master/1.0/README.md#environment-variables
-
-Once the build has completed and the resulting container started, the
-application will be available at
-http://aspnet-app-&lt;project&gt;.&lt;default_subdomain&gt;
-
+The dotnet-example template at https://github.com/redhat-developer/s2i-dotnetcore instantiates the example application.
+The https://github.com/redhat-developer/s2i-dotnetcore/blob/master/README.md[README.md] describes how to use the template.
 
 # Standalone
 
@@ -122,15 +46,6 @@ Once the container is running, it should be accessible using:
 ----
 curl http://127.0.0.1:8080
 ----
-
-= Liveness and Readiness Application Health
-
-The template has been configured with a liveness and readiness probe of which
-you can read more at
-https://docs.openshift.com/enterprise/latest/dev_guide/application_health.html.
-It checks if the container is healthy by doing a HTTP call to the root
-application. It checks if the application is ready by the same mechanism. If
-you'd like to see how the probe is working, use: `oc log -f <pod>`.
 
 [[contributing]]
 Contributing
