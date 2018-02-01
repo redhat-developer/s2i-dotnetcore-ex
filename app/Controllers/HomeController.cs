@@ -15,6 +15,16 @@ namespace app.Controllers
             return View();
         }
 
+        public IActionResult GetDocuments()
+        {
+            //ViewData["Message"] = "Your application description page.";
+            var list = new string[]
+            {
+              "a","b","c"
+            }
+            return Ok(list);
+        }
+
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";
