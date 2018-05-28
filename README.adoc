@@ -30,7 +30,7 @@ builder, `dotnet/dotnet-20-rhel7`, execute the following command:
 
 [source]
 ----
-s2i build --ref=dotnetcore-2.0 --context-dir=app https://github.com/redhat-developer/s2i-dotnetcore-ex dotnet/dotnet-20-rhel7 aspnet-app
+s2i build --ref=dotnetcore-2.1 --context-dir=app https://github.com/redhat-developer/s2i-dotnetcore-ex dotnet/dotnet-21-rhel7 aspnet-app
 ----
 
 The resulting image can be executed using docker:
