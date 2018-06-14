@@ -1,0 +1,16 @@
+#!/bin/bash
+
+set -e
+
+# 'bower' and 'gulp' used to be installed by default by the dotnet-example template.
+# Since .NET Core 2.1 these tools are no longer required by the ASP.NET Core templates.
+# We manually install them here, to be able to remove them from the dotnet-example template.
+# see https://github.com/redhat-developer/s2i-dotnetcore/issues/192.
+echo "---> Installing npm tools..."
+pushd $HOME
+npm install bower gulp
+popd
+
+# Delegate to running the s2i builder's
+# assemble script.
+exec ${STI_SCRIPTS_PATH}/assemble
