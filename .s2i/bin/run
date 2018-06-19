@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+pushd ~/src/${DOTNET_STARTUP_PROJECT}
+echo "---> Running data migration..."
+dotnet ef database update
+popd
+
+# Delegate to running the s2i builder's
+# run script.
+exec ${STI_SCRIPTS_PATH}/run
