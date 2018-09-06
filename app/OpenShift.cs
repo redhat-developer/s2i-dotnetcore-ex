@@ -138,8 +138,6 @@ namespace RedHat.OpenShift
 
     internal class OpenShiftCertificateLoader
     {
-        private const string ClusterCABundle = "/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt";
-        private static bool s_bundleAdded = false;
         private readonly IOptions<OpenShiftIntegrationOptions> _options;
         private X509Certificate2 _certificate;
 
@@ -165,26 +163,6 @@ namespace RedHat.OpenShift
                 return _certificate;
             }
         }
-
-        internal static void TrustClusterCABundle()
-        {
-            if (s_bundleAdded)
-            {
-                return;
-            }
-            s_bundleAdded = true;
-
-            using (X509Store store = new X509Store(StoreName.Root, StoreLocation.CurrentUser))
-            {
-                store.Open(OpenFlags.ReadWrite);
-
-                List<X509Certificate2> certificates = CertificateLoader.LoadCertificatesFromCABundle(ClusterCABundle);
-                foreach (var cert in certificates)
-                {
-                    store.Add(cert);
-                }
-            }
-        }
     }
 }
 
@@ -203,32 +181,6 @@ namespace RedHat.OpenShift.Utils
 
     public static class CertificateLoader
     {
-        private const string BeginString = "-----BEGIN ";
-        private const string EndString = "-----END ";
-
-        public static List<X509Certificate2> LoadCertificatesFromCABundle(string caBundleFileName)
-        {
-            var certificates = new List<X509Certificate2>();
-
-            string[] lines = File.ReadAllLines(caBundleFileName);
-            StringBuilder sb = new StringBuilder();
-            foreach (var line in lines)
-            {
-                if (line.StartsWith(BeginString))
-                {
-                    sb.Clear();
-                }
-                sb.AppendLine(line);
-                if (line.StartsWith(EndString))
-                {
-                    var bytes = Encoding.UTF8.GetBytes(sb.ToString());
-                    certificates.Add(new X509Certificate2(bytes));
-                }
-            }
-
-            return certificates;
-        }
-
         public static X509Certificate2 LoadCertificateWithKey(string certificateFile, string keyFile)
         {
             var certificate = new X509Certificate2(certificateFile);
@@ -320,9 +272,6 @@ namespace Microsoft.AspNetCore.Hosting
             {
                 // Clear the urls. We'll explicitly configure Kestrel depending on the options.
                 builder.UseUrls(new string[]{});
-
-                // We can't do this at server scope, so just do it now.
-                OpenShiftCertificateLoader.TrustClusterCABundle();
 
                 builder.ConfigureServices(services =>
                 {

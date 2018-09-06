@@ -226,7 +226,12 @@
                                         "memory": "${MEMORY_LIMIT}"
                                     }
                                 },
-                                "env": [],
+                                "env": [
+                                    {
+                                        "name": "DOTNET_SSL_DIRS",
+                                        "value": "/var/run/secrets/kubernetes.io/serviceaccount/service-ca.crt"
+                                    }
+                                ],
                                 "volumeMounts": [
                                     {
                                         "mountPath": "/var/run/secrets/service-cert",
