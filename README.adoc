@@ -26,11 +26,11 @@ The https://github.com/redhat-developer/s2i-dotnetcore/blob/master/README.md[REA
 # Standalone
 
 To build a new .NET Core application using a previously existing s2i-dotnetcore
-builder, `dotnet/dotnet-21-rhel7`, execute the following command:
+builder, `dotnet/dotnet-30-rhel7`, execute the following command:
 
 [source]
 ----
-s2i build --ref=dotnetcore-2.2 --context-dir=app https://github.com/redhat-developer/s2i-dotnetcore-ex dotnet/dotnet-22-rhel7 aspnet-app
+s2i build --ref=dotnetcore-3.0 --context-dir=app https://github.com/redhat-developer/s2i-dotnetcore-ex dotnet/dotnet-30-rhel7 aspnet-app
 ----
 
 The resulting image can be executed using docker:
