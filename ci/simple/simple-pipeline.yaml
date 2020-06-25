@@ -1,0 +1,48 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: simple-dotnet-project-source
+spec:
+  type: git
+  params:
+    - name: revision
+      value: dotnetcore-3.1-openshift-manual-pipeline
+    - name: url
+      value: https://github.com/redhat-developer/s2i-dotnetcore-ex
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: simple-dotnet-pipeline
+spec:
+  resources:
+    - name: source-repository
+      type: git
+  tasks:
+    - name: simple-build-and-test
+      taskRef:
+        name: simple-publish
+      resources:
+        inputs:
+          - name: source
+            resource: source-repository
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: simple-publish
+spec:
+  resources:
+    inputs:
+      - name: source
+        type: git
+  steps:
+    - name: simple-dotnet-publish
+      image: registry.access.redhat.com/ubi8/dotnet-31 # .NET Core SDK
+      securityContext:
+        runAsUser: 0  # UBI 8 images generally run as non-root
+      script: |
+          #!/usr/bin/bash
+          dotnet --info
+          cd source
+          dotnet publish -c Release -r linux-x64 --self-contained false "app/app.csproj"

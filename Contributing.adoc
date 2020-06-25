@@ -1,5 +1,5 @@
 [[contributing]]
-= Contributing to s2i-aspnet-example
+= Contributing to s2i-dotnetcore-ex
 
 Contributions to this project (in the form of bug reports, patches, or pull
 requests) are gratefully accepted by the maintainer.

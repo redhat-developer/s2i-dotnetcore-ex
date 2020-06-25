@@ -1,52 +1,18 @@
-= .NET Core Sample App for OpenShift
+= .NET Core Sample App for OpenShift Pipelines
 
 This repository contains a simple MVC .NET Core application that can be deployed on OpenShift.
 
-The example is meant to be built and run with the https://github.com/redhat-developer/s2i-dotnetcore[s2i-dotnetcore] builder
-images. The branches of this repository correspond to versions of the s2i-dotnetcore images.
-
+This branch contains code to make it easy to build and test the application
+using OpenShift Pipelines. Please use the other branches for general OpenShift
+use, including through tools like `oc` and `odo`.
+ 
 = Deploying the application
 
-== Deploy using the OpenShift client ('oc')
-
-[source]
-----
-# Create a new OpenShift project
-$ oc new-project mydemo
-
-# Add the .NET Core application
-$ oc new-app dotnet:3.1~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnetcore-3.1 --context-dir app
-
-# Make the .NET Core application accessible externally and show the url
-$ oc expose service s2i-dotnetcore-ex
-$ oc get route s2i-dotnetcore-ex
-----
-
-== Deploy using the OpenShift Do ('odo')
-
-[source]
-----
-# Use git to check out the .NET Core application
-$ git clone https://github.com/redhat-developer/s2i-dotnetcore-ex
-$ cd s2i-dotnetcore-ex/app
-$ git checkout dotnetcore-3.1
-
-# Create a new OpenShift project
-$ odo project create mydemo
-
-# Add a component for the .NET Core application
-$ odo create dotnet:3.1
-
-# Make the .NET Core application accessible externally
-$ odo url create
-
-# Deploy the application
-$ odo push
-----
+An upcoming blog post will cover how to use this repository in detail.
 
 == Copyright and License
 
-Copyright 2016-2019 by Red Hat, Inc.
+Copyright 2016-2020 by Red Hat, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this package except in compliance with the License (see the `LICENSE` file

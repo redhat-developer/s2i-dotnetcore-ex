@@ -1,0 +1,46 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: s2i-dotnet-project-source
+spec:
+  type: git
+  params:
+    - name: revision
+      value: dotnetcore-3.1-openshift-manual-pipeline
+    - name: url
+      value: https://github.com/redhat-developer/s2i-dotnetcore-ex
+---
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: s2i-dotnet-image
+spec:
+  type: image
+  params:
+    - name: url
+      value: image-registry.openshift-image-registry.svc:5000/dotnet-pipeline-app/app:latest
+---
+apiVersion: tekton.dev/v1beta1
+kind: Pipeline
+metadata:
+  name: s2i-dotnet-pipeline
+spec:
+  resources:
+    - name: source-repository
+      type: git
+    - name: image
+      type: image
+  tasks:
+    - name: s2i-build-source
+      taskRef:
+        name: s2i-dotnet-3
+      params:
+        - name: TLSVERIFY
+          value: "false"
+      resources:
+        inputs:
+          - name: source
+            resource: source-repository
+        outputs:
+          - name: image
+            resource: image

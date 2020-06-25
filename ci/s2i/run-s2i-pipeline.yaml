@@ -1,0 +1,15 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: run-s2i-dotnet-pipeline-
+spec:
+  serviceAccountName: pipeline
+  pipelineRef:
+    name: s2i-dotnet-pipeline
+  resources:
+    - name: source-repository
+      resourceRef:
+        name: s2i-dotnet-project-source
+    - name: image
+      resourceRef:
+        name: s2i-dotnet-image

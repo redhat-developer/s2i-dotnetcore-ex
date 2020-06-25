@@ -1,0 +1,2 @@
+DOTNET_STARTUP_PROJECT=app/app.csproj
+DOTNET_TEST_PROJECTS=app.tests/app.tests.csproj

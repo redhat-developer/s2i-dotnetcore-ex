@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: run-simple-dotnet-pipeline-
+spec:
+  pipelineRef:
+    name: simple-dotnet-pipeline
+  resources:
+    - name: source-repository
+      resourceRef:
+        name: simple-dotnet-project-source
