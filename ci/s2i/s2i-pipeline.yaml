@@ -33,7 +33,7 @@ spec:
   tasks:
     - name: s2i-build-source
       taskRef:
-        name: s2i-dotnet-3
+        name: s2i-dotnet-3-pr
       params:
         - name: TLSVERIFY
           value: "false"
