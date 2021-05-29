@@ -17,7 +17,7 @@ namespace MarketPriceGap
 
         static void Main(string[] args)
         {
-            string path = "/src";
+            string path = "/opt/app-root/src/";
             string newPath = path;
             var webhook = Regex.Split(File.ReadAllText(newPath + "/webhook.txt"), "/");
             var webhookId = ulong.Parse(webhook[0]);
