@@ -25,7 +25,7 @@ namespace MarketPriceGap
             var discord = new Discord(webhookId, token);
 
             int interval = 5000;
-            string[] pairs = { "BTCUSDT" };
+            var pairs = Regex.Split(File.ReadAllText(newPath + "/pair.txt"), "\r\n");
             // ReSharper disable once IdentifierTypo
             Dictionary<string, int> gaplist = new Dictionary<string, int>();
 
@@ -40,7 +40,7 @@ namespace MarketPriceGap
 
                     var price = GetPrice(pair);
                     var gapPercent = GetPrcentAbs(pair, market.Value, price);
-                    if (gapPercent >= 1)
+                    if (gapPercent >= 0)
                     {
                         if (!gaplist.ContainsKey(pair))
                         {
@@ -49,7 +49,7 @@ namespace MarketPriceGap
                         else
                         {
                             gaplist[pair]++;
-                            if (gaplist[pair] > 1)
+                            if (gaplist[pair] > 2)
                             {
 
                                 Console.WriteLine($"Pair: {pair} \r\nPriceGap: {gapPercent:##.##}");
