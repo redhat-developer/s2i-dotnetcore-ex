@@ -15,7 +15,7 @@ images. The branches of this repository correspond to versions of the s2i-dotnet
 $ oc new-project mydemo
 
 # Add the .NET Core application
-$ oc new-app dotnet:5.0-ubi8~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-5.0 --context-dir app
+$ oc new-app dotnet:6.0-ubi8~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-6.0 --context-dir app
 
 # Make the .NET Core application accessible externally and show the url
 $ oc expose service s2i-dotnetcore-ex
@@ -26,19 +26,12 @@ $ oc get route s2i-dotnetcore-ex
 
 [source]
 ----
-# Use git to check out the .NET Core application
-$ git clone https://github.com/redhat-developer/s2i-dotnetcore-ex
-$ cd s2i-dotnetcore-ex/app
-$ git checkout dotnet-5.0
+# Create a directory
+$ mkdir example
+$ cd example
 
-# Create a new OpenShift project
-$ odo project create mydemo
-
-# Add a component for the .NET Core application
-$ odo create dotnet:5.0-ubi8
-
-# Make the .NET Core application accessible externally
-$ odo url create
+# Create a 'dotnet60' odo component that uses the 's2i-example' starter (this repo).
+$ odo create dotnet60 --starter s2i-example
 
 # Deploy the application
 $ odo push
@@ -46,7 +39,7 @@ $ odo push
 
 == Copyright and License
 
-Copyright 2016-2020 by Red Hat, Inc.
+Copyright 2016-2021 by Red Hat, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this package except in compliance with the License (see the `LICENSE` file
