@@ -5,7 +5,10 @@ using app.Models;
 namespace app.Controllers;
 
 public class HomeController : Controller
-{
+{ 
+
+
+
     private readonly ILogger<HomeController> _logger;
 
     public HomeController(ILogger<HomeController> logger)
