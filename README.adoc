@@ -5,9 +5,9 @@ This repository contains a simple MVC .NET Core application that can be deployed
 The example is meant to be built and run with the https://github.com/redhat-developer/s2i-dotnetcore[s2i-dotnetcore] builder
 images. The branches of this repository correspond to versions of the s2i-dotnetcore images.
 
-= Deploying the application
+== Deploying the application
 
-== Deploy using the OpenShift client ('oc')
+You can deploy the application using the OpenShift client (`oc`) with the following commands:
 
 [source]
 ----
@@ -15,31 +15,16 @@ images. The branches of this repository correspond to versions of the s2i-dotnet
 $ oc new-project mydemo
 
 # Add the .NET Core application
-$ oc new-app dotnet:6.0-ubi8~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-6.0 --context-dir app
+$ oc new-app dotnet:7.0-ubi8~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-7.0 --context-dir app
 
 # Make the .NET Core application accessible externally and show the url
 $ oc expose service s2i-dotnetcore-ex
 $ oc get route s2i-dotnetcore-ex
 ----
 
-== Deploy using the OpenShift Do ('odo')
-
-[source]
-----
-# Create a directory
-$ mkdir example
-$ cd example
-
-# Create a 'dotnet60' odo component that uses the 's2i-example' starter (this repo).
-$ odo create dotnet60 --starter s2i-example
-
-# Deploy the application
-$ odo push
-----
-
 == Copyright and License
 
-Copyright 2016-2021 by Red Hat, Inc.
+Copyright 2022 by Red Hat, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this package except in compliance with the License (see the `LICENSE` file
