@@ -15,7 +15,7 @@ You can deploy the application using the OpenShift client (`oc`) with the follow
 $ oc new-project mydemo
 
 # Add the .NET Core application
-$ oc new-app dotnet:7.0-ubi8~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-7.0 --context-dir app
+$ oc new-app dotnet:8.0-ubi8~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-8.0 --context-dir app
 
 # Make the .NET Core application accessible externally and show the url
 $ oc expose service s2i-dotnetcore-ex
@@ -24,7 +24,7 @@ $ oc get route s2i-dotnetcore-ex
 
 == Copyright and License
 
-Copyright 2022 by Red Hat, Inc.
+Copyright 2023 by Red Hat, Inc.
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not
 use this package except in compliance with the License (see the `LICENSE` file
