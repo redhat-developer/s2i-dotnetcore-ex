@@ -14,6 +14,9 @@ You can deploy the application using the OpenShift client (`oc`) with the follow
 # Create a new OpenShift project
 $ oc new-project mydemo
 
+# Import the imagestreams
+$ oc apply -f https://raw.githubusercontent.com/redhat-developer/s2i-dotnetcore/main/dotnet_imagestreams.json
+
 # Add the .NET Core application
 $ oc new-app dotnet:10.0~https://github.com/redhat-developer/s2i-dotnetcore-ex#dotnet-10.0 --context-dir app
 
